@@ -114,3 +114,23 @@
     flex-direction: column;
   }
 }
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  border: 1px solid #7f7f7f;
+  border-radius: 15px;
+  padding: 10px 10px;
+  margin-top: 20px;
+}
+
+.loadingItem {
+  align-self: center;
+}
+
+.loadingItem img {
+  max-width: 75px;
+  max-height: 75px;
+}

@@ -10,8 +10,8 @@ contract Bears is ERC721, Ownable {
     string baseTokenUri;
     bool paused = false;
 
-    // TODO increment mint price when live
-    uint256 price = 3 * 10**16; // Each mint will cost 0.3 MATIC
+    // TODO set mint price when live
+    uint256 price = 1 * 10**16; // Each mint will cost 0.1 MATIC
 
     modifier onlyWhenNotPaused {
         require(!paused, "Contract is currently paused");

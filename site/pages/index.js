@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.css"
 import Footer from "../components/Footer"
 import Head from "next/head"
+import Image from 'next/image'
 import { Contract, providers, utils } from "ethers"
 import { useEffect, useState, useRef } from "react"
 import Web3Modal from "web3modal"
@@ -8,7 +9,8 @@ import { CONTRACT_ADDRESS, CONTRACT_ABI } from "../constants"
 
 export default function Home() {
   const [ walletConnected, setWalletConnected ] = useState(false);
-  const [ bearsMinted, setBearsMinted ] = useState(0);
+  const [ bearsMinted, setBearsMinted ] = useState("0");
+  const [ loading, setLoading ] = useState(false);
   const web3ModalRef = useRef();
 
   useEffect(() => {
@@ -55,7 +57,35 @@ export default function Home() {
     const provider = await getProviderOrSigner(false);
     const bearsContract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
     const numBears = await bearsContract.tokenId();
-    setBearsMinted(numBears);
+    setBearsMinted(numBears.toString());
+  }
+
+  const mintBear = async () => {
+    const signer = await getProviderOrSigner(true);
+    const bearsContract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+    let tx = await bearsContract.mint({
+      value: utils.parseEther("0.1"),
+    });
+    setLoading(true);
+    await tx.wait();
+
+    setLoading(false);
+    await getNumBearsMinted();
+  }
+
+  const renderMintButton = () => {
+    return (
+      <button disabled={loading} onClick={mintBear}>{loading ? "Minting..." : "Mint!"}</button>
+    )
+  }
+
+  const renderLoading = () => {
+    return (
+      <section className={styles.loading}>
+        <h3 className={styles.loadingItem}>Please wait...</h3>
+        <img src="/loading.gif" alt="Loading spinner image" className={styles.loadingItem} />
+      </section>
+    );
   }
 
   return (
@@ -66,6 +96,8 @@ export default function Home() {
 
       <main className={styles.main}>
         Number of WorldCongress Dev Bears minted: {bearsMinted}
+        {renderMintButton()}
+        {loading && renderLoading()}
       </main>
 
       <Footer />
