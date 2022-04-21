@@ -61,13 +61,18 @@ export default function Home() {
   }
 
   const mintBear = async () => {
-    const signer = await getProviderOrSigner(true);
-    const bearsContract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
-    let tx = await bearsContract.mint({
-      value: utils.parseEther("0.1"),
-    });
-    setLoading(true);
-    await tx.wait();
+    try {
+      const signer = await getProviderOrSigner(true);
+      const bearsContract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+      let tx = await bearsContract.mint({
+        value: utils.parseEther("0.05"),
+      });
+      setLoading(true);
+      await tx.wait();
+    } catch (err) {
+        window.alert("An error occurred - see console for details");
+        console.log(err);
+    }
 
     setLoading(false);
     await getNumBearsMinted();
