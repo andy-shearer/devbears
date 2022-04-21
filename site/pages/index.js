@@ -78,8 +78,12 @@ export default function Home() {
       setLoading(true);
       await tx.wait();
     } catch (err) {
-        window.alert("An error occurred - see console for details");
-        console.log(err);
+        if(err.code === 4001) {
+          console.log("User rejected the transaction.");
+        } else {
+          window.alert("An error occurred - see console for details");
+          console.log(err);
+        }
     }
 
     setLoading(false);
