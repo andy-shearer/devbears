@@ -25,6 +25,11 @@ export default function Home() {
     connectWallet();
   }, [walletConnected]);
 
+  useEffect(() => {
+    // Run the following every time the page is re-rendered
+    getNumBearsMinted();
+  }, []);
+
   /**
    * Attempt to obtain the provider, which will prompt wallet connection when used for the first time
    */
