@@ -3,7 +3,6 @@ const { Canvas, Image } = require('canvas');
 
 const buildImage = async () => {
   const imgPrefix = "data:image/png;base64,";
-  console.log("Attempting image merge");
   const base64 = await mergeImages(
     ["public/bearbuild/background.png", "public/bearbuild/bearbody.png", "public/bearbuild/bearhead.png" ],
     {
