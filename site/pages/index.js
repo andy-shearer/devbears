@@ -80,7 +80,12 @@ export default function Home() {
     } catch (err) {
         if(err.code === 4001) {
           console.log("User rejected the transaction.");
-        } else {
+        }
+        /**
+         * Allowed errors:
+         *    -32002 "Already processing eth_requestAccounts. Please wait"
+         */
+        else if(err.code != -32002) {
           window.alert("An error occurred - see console for details");
           console.log(err);
         }
