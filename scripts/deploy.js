@@ -2,7 +2,7 @@ const { ethers } = require("hardhat");
 
 async function main() {
   const bearsContract = await ethers.getContractFactory("Bears");
-  const deployedContract = await bearsContract.deploy("https://devbears.vercel.app/");
+  const deployedContract = await bearsContract.deploy("https://devbears.vercel.app/api/");
 
   await deployedContract.deployed();
 
