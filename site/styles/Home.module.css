@@ -1,5 +1,6 @@
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@300;400;500;700&display=swap');
 .container {
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .main {
@@ -10,6 +11,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 25px;
+  background: #f3f5f6;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
 }
 
 .footer {
@@ -43,6 +48,10 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  color: #A65D67;
+  font-family: Poppins;
+  font-weight: 700;
+  font-size: 5rem;
 }
 
 .title,
@@ -124,6 +133,8 @@
   border-radius: 15px;
   padding: 10px 10px;
   margin-top: 20px;
+  position: absolute;
+  background: white;
 }
 
 .loadingItem {
@@ -133,4 +144,28 @@
 .loadingItem img {
   max-width: 75px;
   max-height: 75px;
+}
+
+.question select {
+  min-width: 150px;
+}
+
+.textBox {
+  border-radius: 10px;
+  max-width: 60vw;
+  min-height: 20vh;
+  padding: 0px 0px 0px 20px;
+  background-color: white;
+  margin-bottom: 50px;
+}
+
+.textHeading {
+  font-size: 1.75rem;
+  text-align: center;
+  color: #00adb5;
+}
+
+.textContent {
+  padding: 0px 15px 15px 15px;
+  font-size: 1.4rem;
 }

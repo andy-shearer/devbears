@@ -1,5 +1,6 @@
 import styles from "../styles/Home.module.css"
 import Footer from "../components/Footer"
+import Textion from "../components/Textion"
 import Head from "next/head"
 import Image from 'next/image'
 import { Contract, providers, utils } from "ethers"
@@ -12,6 +13,26 @@ export default function Home() {
   const [ bearsMinted, setBearsMinted ] = useState("0");
   const [ loading, setLoading ] = useState(false);
   const web3ModalRef = useRef();
+  const [formData, setFormData] = useState(
+      {
+          area: "",
+          country: "",
+          lang: "",
+          os: "",
+          trait: "",
+      }
+  )
+
+  const handleChange = (event) => {
+      console.log(event);
+      const {name, value} = event.target;
+      setFormData(prevFormData => {
+          return {
+              ...prevFormData,
+              [name]: value
+          }
+      });
+  }
 
   useEffect(() => {
     if(!walletConnected) {
@@ -113,13 +134,126 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>WorldCongress Dev Bears</title>
+        <title>World Congress Dev Bears</title>
       </Head>
 
       <main className={styles.main}>
-        Number of WorldCongress Dev Bears minted: {bearsMinted}
+        <h1 className={styles.title}>World Congress Dev Bears</h1>
+        Number of Dev Bears minted: {bearsMinted}
         {renderMintButton()}
         {loading && renderLoading()}
+
+        <Textion title="What is the World Congress?">
+           The World Congress is an upcoming event hosted by WeAreDevelopers, hosted for the global developer community
+           to meet in Berlin. The event is a chance to connect with peers and get recent insights on software development,
+           best practices and future tech trends.
+        </Textion>
+
+        <Textion title="What are Dev Bears?">
+           Dev Bears are a randomly generated NFT created to commemorate and celebrate the upcoming 2022 World Congress event.
+           Bears are an iconic symbol of Berlin where the event is being hosted this year. Each Dev Bear has some characteristics
+           that are picked based off some user input.
+           <br /><br />
+           A Dev Bear image can be generated on this page, and can be minted on the Polygon blockchain by connecting a crypto wallet such
+           as MetaMask.
+        </Textion>
+
+        <h2>Create your Dev Bear 🐻</h2>
+
+        <section className={styles.question}>
+          <label htmlFor="area">What area does your Dev Bear work in?</label>
+          <br />
+          <select
+              id="area"
+              value={formData.area}
+              onChange={handleChange}
+              name="area"
+          >
+              <option value="1">Tech Enthusiast</option>
+              <option value="2">Developer</option>
+              <option value="3">Architect</option>
+              <option value="4">QA</option>
+              <option value="5">DevOps</option>
+              <option value="6">Security</option>
+          </select>
+        </section>
+
+        <section className={styles.question}>
+          <label htmlFor="country">Which country does your Dev Bear represent?</label>
+          <br />
+          <select
+              id="country"
+              value={formData.country}
+              onChange={handleChange}
+              name="country"
+          >
+              <option value="1">UK</option>
+              <option value="2">France</option>
+              <option value="3">Germany</option>
+              <option value="4">Netherlands</option>
+              <option value="5">Italy</option>
+              <option value="6">US</option>
+              <option value="7">Other</option>
+          </select>
+        </section>
+
+        <section className={styles.question}>
+          <label htmlFor="lang">What is your Dev Bear's chosen programming language/framework?</label>
+          <br />
+          <select
+              id="lang"
+              value={formData.lang}
+              onChange={handleChange}
+              name="lang"
+          >
+              <option value="1">JavaScript</option>
+              <option value="2">React.js</option>
+              <option value="3">Java</option>
+              <option value="4">C</option>
+              <option value="5">C++</option>
+              <option value="6">C#</option>
+              <option value="7">Rust</option>
+              <option value="8">Solidity</option>
+              <option value="9"></option>
+          </select>
+        </section>
+
+        <section className={styles.question}>
+          <label htmlFor="os">What is your Dev Bear's chosen Operating System?</label>
+          <br />
+          <select
+              id="os"
+              value={formData.os}
+              onChange={handleChange}
+              name="os"
+          >
+              <option value="1">Windows</option>
+              <option value="2">Linux</option>
+              <option value="3">MacOS</option>
+              <option value="4">Other</option>
+          </select>
+        </section>
+
+
+        <section className={styles.question}>
+           <label htmlFor="trait">Pick a trait for your Dev Bear </label>
+           <br />
+           <select
+               id="trait"
+               value={formData.trait}
+               onChange={handleChange}
+               name="trait"
+           >
+               <option value="1">Windows</option>
+               <option value="2">Linux</option>
+               <option value="3">MacOS</option>
+               <option value="4">Other</option>
+           </select>
+         </section>
+
+
+         <button className={styles.generateButton} onClick={() => {alert(JSON.stringify(formData))}}>Generate Dev Bear!</button>
+
       </main>
 
       <Footer />
