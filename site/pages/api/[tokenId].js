@@ -1,4 +1,4 @@
-import buildImage from "../ImageBuilder";
+import buildImage from "../../utils/ImageBuilder";
 
 export default async function handler(req, res) {
   // get the query params

@@ -1,7 +1,7 @@
 import styles from "../styles/Home.module.css"
 import Footer from "../components/Footer"
 import Textion from "../components/Textion"
-import buildImage from "./ImageBuilder";
+import buildImage from "../utils/ImageBuilder";
 import Head from "next/head"
 import Image from 'next/image'
 import { Contract, providers, utils } from "ethers"
@@ -260,7 +260,7 @@ export default function Home() {
 
 
           <button className={styles.generateButton} onClick={generateBear}>Generate Dev Bear!</button>
-          <img src={srcBear} className={styles.generatedBear} alt="Generated Bear" />
+          {srcBear && <img src={srcBear} className={styles.generatedBear} alt="Generated Bear" />}
       </main>
 
       <Footer />
