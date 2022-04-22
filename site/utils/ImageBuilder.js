@@ -10,8 +10,8 @@ function getBackgroundNum(input) {
   return (count % 2) + 1;
 }
 
-export default async function buildImage(input) {
-  console.log("Input string for new bear:", input)
+export default async function buildImage(input = "11111") {
+  console.debug("Input string for new bear:", input)
   const imgPrefix = "data:image/png;base64,";
 
   const bgNum = getBackgroundNum(input);

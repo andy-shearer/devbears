@@ -92,7 +92,7 @@ export default function Home() {
       const signer = await getProviderOrSigner(true);
       const bearsContract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
       let tx = await bearsContract.mint(
-        "5678",
+        "54231",
         {
           value: utils.parseEther("0.05"),
         }
