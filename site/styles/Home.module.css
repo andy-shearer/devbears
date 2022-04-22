@@ -48,7 +48,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
-  color: #A65D67;
+  color: #FF6B6B;
   font-family: Poppins;
   font-weight: 700;
   font-size: 5rem;
@@ -162,10 +162,15 @@
 .textHeading {
   font-size: 1.75rem;
   text-align: center;
-  color: #00adb5;
+  color: #4ECDC4;
 }
 
 .textContent {
   padding: 0px 15px 15px 15px;
   font-size: 1.4rem;
+}
+
+.generatedBear {
+  max-width: 60vw;
+  max-height: 30vw;
 }

@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.css"
 import Footer from "../components/Footer"
 import Textion from "../components/Textion"
+import buildImage from "./ImageBuilder";
 import Head from "next/head"
 import Image from 'next/image'
 import { Contract, providers, utils } from "ethers"
@@ -12,19 +13,19 @@ export default function Home() {
   const [ walletConnected, setWalletConnected ] = useState(false);
   const [ bearsMinted, setBearsMinted ] = useState("0");
   const [ loading, setLoading ] = useState(false);
+  const [ srcBear, setSrcBear ] = useState("");
   const web3ModalRef = useRef();
   const [formData, setFormData] = useState(
       {
-          area: "",
-          country: "",
-          lang: "",
-          os: "",
-          trait: "",
+          area: "1",
+          country: "1",
+          lang: "1",
+          os: "1",
+          trait: "1",
       }
   )
 
   const handleChange = (event) => {
-      console.log(event);
       const {name, value} = event.target;
       setFormData(prevFormData => {
           return {
@@ -129,6 +130,12 @@ export default function Home() {
         <img src="/loading.gif" alt="Loading spinner image" className={styles.loadingItem} />
       </section>
     );
+  }
+
+  const generateBear = async () => {
+    const inputString = formData.area + formData.country + formData.lang + formData.os + formData.trait;
+    const built = await buildImage(inputString);
+    setSrcBear(built);
   }
 
   return (
@@ -249,11 +256,11 @@ export default function Home() {
                <option value="3">MacOS</option>
                <option value="4">Other</option>
            </select>
-         </section>
+        </section>
 
 
-         <button className={styles.generateButton} onClick={() => {alert(JSON.stringify(formData))}}>Generate Dev Bear!</button>
-
+          <button className={styles.generateButton} onClick={generateBear}>Generate Dev Bear!</button>
+          <img src={srcBear} className={styles.generatedBear} alt="Generated Bear" />
       </main>
 
       <Footer />
