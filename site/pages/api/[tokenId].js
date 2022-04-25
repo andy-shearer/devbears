@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   const tokenId = req.query.tokenId;
   const inputString = req.query.iStr;
 
-  const imgData = await buildImage(inputString);
+  const imgData = await buildImage(true, inputString);
   // More info on metadata standards can be found here: https://docs.opensea.io/docs/metadata-standards
   res.status(200).json({
     name: "WorldCongress Dev Bear #" + tokenId,

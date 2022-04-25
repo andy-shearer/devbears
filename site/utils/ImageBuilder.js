@@ -1,6 +1,8 @@
 import mergeImages from "merge-images";
 const { Canvas, Image } = require('canvas');
 
+let pathPrefix = "./bearbuild/";
+
 function getBackgroundNum(input) {
   let count = 0;
   for(let i=0; i<5; i++) {
@@ -10,14 +12,24 @@ function getBackgroundNum(input) {
   return (count % 2) + 1;
 }
 
-export default async function buildImage(input = "11111") {
+function getPath(identifier) {
+  return pathPrefix + identifier;
+}
+
+export default async function buildImage(api, input = "11111") {
   console.debug("Input string for new bear:", input)
   const imgPrefix = "data:image/png;base64,";
-
+  if(api) {
+    pathPrefix = "./public/bearbuild/"
+  }
   const bgNum = getBackgroundNum(input);
 
   const base64 = await mergeImages(
-    [`./bearbuild/background${bgNum}.png`, "./bearbuild/bearbody.png", "./bearbuild/bearhead.png" ],
+    [
+      getPath(`background${bgNum}.png`),
+      getPath("bearbody.png"),
+      getPath("bearhead.png")
+    ],
     {
       Canvas: Canvas,
       Image: Image

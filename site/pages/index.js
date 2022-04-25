@@ -134,7 +134,7 @@ export default function Home() {
 
   const generateBear = async () => {
     const inputString = formData.area + formData.country + formData.lang + formData.os + formData.trait;
-    const built = await buildImage(inputString);
+    const built = await buildImage(false, inputString);
     setSrcBear(built);
   }
 
