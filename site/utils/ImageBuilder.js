@@ -9,11 +9,21 @@ function getBackgroundNum(input) {
     count += parseInt(input[i]);
   }
 
-  return (count % 2) + 1;
+  return (count % 7) + 1;
 }
 
 function getPath(identifier) {
   return pathPrefix + identifier;
+}
+
+function getFlag(input) {
+  // Flag identifier is at index 1 within the input string
+  let flagId = input[1];
+  if(flagId == 0 || flagId > 9) {
+    flagId = 9;
+  }
+
+  return getPath(`flag${flagId}.png`);
 }
 
 export default async function buildImage(api, input = "11111") {
@@ -28,7 +38,9 @@ export default async function buildImage(api, input = "11111") {
     [
       getPath(`background${bgNum}.png`),
       getPath("bearbody.png"),
-      getPath("bearhead.png")
+      getPath("bearhead.png"),
+      getFlag(input),
+      getPath("bearlefthand.png")
     ],
     {
       Canvas: Canvas,

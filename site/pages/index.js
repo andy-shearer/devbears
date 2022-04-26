@@ -186,7 +186,7 @@ export default function Home() {
         </section>
 
         <section className={styles.question}>
-          <label htmlFor="country">Which country does your Dev Bear represent?</label>
+          <label htmlFor="country">Which flag does your Dev Bear salute?</label>
           <br />
           <select
               id="country"
@@ -195,12 +195,14 @@ export default function Home() {
               name="country"
           >
               <option value="1">UK</option>
-              <option value="2">France</option>
-              <option value="3">Germany</option>
-              <option value="4">Netherlands</option>
-              <option value="5">Italy</option>
-              <option value="6">US</option>
-              <option value="7">Other</option>
+              <option value="2">Ireland</option>
+              <option value="3">France</option>
+              <option value="4">Germany</option>
+              <option value="5">Netherlands</option>
+              <option value="6">Italy</option>
+              <option value="7">Belgium</option>
+              <option value="8">Pirate</option>
+              <option value="9">Anonymous</option>
           </select>
         </section>
 
@@ -221,7 +223,7 @@ export default function Home() {
               <option value="6">C#</option>
               <option value="7">Rust</option>
               <option value="8">Solidity</option>
-              <option value="9"></option>
+              <option value="9">Other</option>
           </select>
         </section>
 
