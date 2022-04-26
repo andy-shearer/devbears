@@ -5,7 +5,7 @@ let pathPrefix = "./bearbuild/";
 
 function getBackgroundNum(input) {
   let count = 0;
-  for(let i=0; i<5; i++) {
+  for(let i=0; i<4; i++) {
     count += parseInt(input[i]);
   }
 

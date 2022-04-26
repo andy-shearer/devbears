@@ -20,8 +20,7 @@ export default function Home() {
           area: "1",
           country: "1",
           lang: "1",
-          os: "1",
-          trait: "1",
+          os: "1"
       }
   )
 
@@ -91,8 +90,9 @@ export default function Home() {
     try {
       const signer = await getProviderOrSigner(true);
       const bearsContract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+      const inputString = formData.area + formData.country + formData.lang + formData.os;
       let tx = await bearsContract.mint(
-        "54231",
+        inputString,
         {
           value: utils.parseEther("0.05"),
         }
@@ -119,7 +119,7 @@ export default function Home() {
 
   const renderMintButton = () => {
     return (
-      <button disabled={loading} onClick={mintBear}>{loading ? "Minting..." : "Mint!"}</button>
+      <button disabled={loading} onClick={mintBear}>{loading ? "Minting..." : "Mint this bear"}</button>
     )
   }
 
@@ -133,7 +133,7 @@ export default function Home() {
   }
 
   const generateBear = async () => {
-    const inputString = formData.area + formData.country + formData.lang + formData.os + formData.trait;
+    const inputString = formData.area + formData.country + formData.lang + formData.os;
     const built = await buildImage(false, inputString);
     setSrcBear(built);
   }
@@ -147,7 +147,6 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>World Congress Dev Bears</h1>
         Number of Dev Bears minted: {bearsMinted}
-        {renderMintButton()}
         {loading && renderLoading()}
 
         <Textion title="What is the World Congress?">
@@ -242,26 +241,9 @@ export default function Home() {
           </select>
         </section>
 
-
-        <section className={styles.question}>
-           <label htmlFor="trait">Pick a trait for your Dev Bear </label>
-           <br />
-           <select
-               id="trait"
-               value={formData.trait}
-               onChange={handleChange}
-               name="trait"
-           >
-               <option value="1">Windows</option>
-               <option value="2">Linux</option>
-               <option value="3">MacOS</option>
-               <option value="4">Other</option>
-           </select>
-        </section>
-
-
           <button className={styles.generateButton} onClick={generateBear}>Generate Dev Bear!</button>
           {srcBear && <img src={srcBear} className={styles.generatedBear} alt="Generated Bear" />}
+          {srcBear && renderMintButton()}
       </main>
 
       <Footer />
