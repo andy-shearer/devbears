@@ -176,12 +176,11 @@ export default function Home() {
               onChange={handleChange}
               name="area"
           >
-              <option value="1">Tech Enthusiast</option>
-              <option value="2">Developer</option>
-              <option value="3">Architect</option>
-              <option value="4">QA</option>
-              <option value="5">DevOps</option>
-              <option value="6">Security</option>
+              <option value="1">Developer</option>
+              <option value="2">Architect</option>
+              <option value="3">DevOps</option>
+              <option value="4">Security</option>
+              <option value="5">Product Owner</option>
           </select>
         </section>
 

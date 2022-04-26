@@ -16,14 +16,40 @@ function getPath(identifier) {
   return pathPrefix + identifier;
 }
 
+function getArea(input) {
+  let areaId = input[0];
+  if(areaId == 0 || areaId > 5) {
+    areaId = 1;
+  }
+
+  return getPath(`area${areaId}.png`);
+}
+
 function getFlag(input) {
-  // Flag identifier is at index 1 within the input string
   let flagId = input[1];
   if(flagId == 0 || flagId > 9) {
     flagId = 9;
   }
 
   return getPath(`flag${flagId}.png`);
+}
+
+function getOS(input) {
+  let osId = input[3];
+  if(osId == 0 || osId > 4) {
+    osId = 4;
+  }
+
+  return getPath(`os${osId}.png`);
+}
+
+function getLang(input) {
+  let langId = input[2];
+  if(langId == 0 || langId > 9) {
+    langId = 9;
+  }
+
+  return getPath(`lang${langId}.png`);
 }
 
 export default async function buildImage(api, input = "11111") {
@@ -40,7 +66,11 @@ export default async function buildImage(api, input = "11111") {
       getPath("bearbody.png"),
       getPath("bearhead.png"),
       getFlag(input),
-      getPath("bearlefthand.png")
+      getPath("bearlefthand.png"),
+      getPath("bearrighthand.png"),
+      getArea(input),
+      getOS(input),
+      getLang(input)
     ],
     {
       Canvas: Canvas,
