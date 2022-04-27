@@ -149,6 +149,14 @@ export default function Home() {
         <h1 className={styles.title}>World Congress Dev Bears</h1>
 
         <Carousel />
+        <a
+          href="https://testnets.opensea.io/collection/world-congress-bears-v4"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.a}
+        >
+          View the collection on OpenSea!
+        </a>
 
         <Textion title="What is the World Congress? 🌎">
            The World Congress is an upcoming event hosted by WeAreDevelopers, hosted for the global developer community
@@ -165,86 +173,88 @@ export default function Home() {
            as MetaMask.
         </Textion>
 
-        <h2 className={styles.textHeading}>Create your Dev Bear 👇</h2>
-        Number of Dev Bears minted: {bearsMinted}
-        {loading && renderLoading()}
+        <section className={styles.formBox}>
+          <h2 className={styles.textHeading}>Create your Dev Bear 👇</h2>
+          Total number of Dev Bears minted so far: {bearsMinted}
+          {loading && renderLoading()}
 
-        <section className={styles.question}>
-          <label htmlFor="area">What area does your Dev Bear work in?</label>
-          <br />
-          <select
-              id="area"
-              value={formData.area}
-              onChange={handleChange}
-              name="area"
-          >
-              <option value="1">Developer</option>
-              <option value="2">Architect</option>
-              <option value="3">DevOps</option>
-              <option value="4">Security</option>
-              <option value="5">Product Owner</option>
-          </select>
+          <section className={styles.question}>
+            <label htmlFor="area">What area does your Dev Bear work in?</label>
+            <br />
+            <select
+                id="area"
+                value={formData.area}
+                onChange={handleChange}
+                name="area"
+            >
+                <option value="1">Developer</option>
+                <option value="2">Architect</option>
+                <option value="3">DevOps</option>
+                <option value="4">Security</option>
+                <option value="5">Product Owner</option>
+            </select>
+          </section>
+
+          <section className={styles.question}>
+            <label htmlFor="country">Which flag does your Dev Bear salute?</label>
+            <br />
+            <select
+                id="country"
+                value={formData.country}
+                onChange={handleChange}
+                name="country"
+            >
+                <option value="1">UK</option>
+                <option value="2">Ireland</option>
+                <option value="3">France</option>
+                <option value="4">Germany</option>
+                <option value="5">Netherlands</option>
+                <option value="6">Italy</option>
+                <option value="7">Belgium</option>
+                <option value="8">Pirate</option>
+                <option value="9">Anonymous</option>
+            </select>
+          </section>
+
+          <section className={styles.question}>
+            <label htmlFor="lang">What is your Dev Bear's chosen programming language/framework?</label>
+            <br />
+            <select
+                id="lang"
+                value={formData.lang}
+                onChange={handleChange}
+                name="lang"
+            >
+                <option value="1">JavaScript</option>
+                <option value="2">React.js</option>
+                <option value="3">Java</option>
+                <option value="4">C</option>
+                <option value="5">C++</option>
+                <option value="6">C#</option>
+                <option value="7">Rust</option>
+                <option value="8">Solidity</option>
+                <option value="9">Other</option>
+            </select>
+          </section>
+
+          <section className={styles.question}>
+            <label htmlFor="os">What is your Dev Bear's chosen Operating System?</label>
+            <br />
+            <select
+                id="os"
+                value={formData.os}
+                onChange={handleChange}
+                name="os"
+            >
+                <option value="1">Windows</option>
+                <option value="2">Linux</option>
+                <option value="3">MacOS</option>
+                <option value="4">Other</option>
+            </select>
+          </section>
+
+          <button className={styles.button} onClick={generateBear}>Generate Dev Bear!</button>
         </section>
-
-        <section className={styles.question}>
-          <label htmlFor="country">Which flag does your Dev Bear salute?</label>
-          <br />
-          <select
-              id="country"
-              value={formData.country}
-              onChange={handleChange}
-              name="country"
-          >
-              <option value="1">UK</option>
-              <option value="2">Ireland</option>
-              <option value="3">France</option>
-              <option value="4">Germany</option>
-              <option value="5">Netherlands</option>
-              <option value="6">Italy</option>
-              <option value="7">Belgium</option>
-              <option value="8">Pirate</option>
-              <option value="9">Anonymous</option>
-          </select>
-        </section>
-
-        <section className={styles.question}>
-          <label htmlFor="lang">What is your Dev Bear's chosen programming language/framework?</label>
-          <br />
-          <select
-              id="lang"
-              value={formData.lang}
-              onChange={handleChange}
-              name="lang"
-          >
-              <option value="1">JavaScript</option>
-              <option value="2">React.js</option>
-              <option value="3">Java</option>
-              <option value="4">C</option>
-              <option value="5">C++</option>
-              <option value="6">C#</option>
-              <option value="7">Rust</option>
-              <option value="8">Solidity</option>
-              <option value="9">Other</option>
-          </select>
-        </section>
-
-        <section className={styles.question}>
-          <label htmlFor="os">What is your Dev Bear's chosen Operating System?</label>
-          <br />
-          <select
-              id="os"
-              value={formData.os}
-              onChange={handleChange}
-              name="os"
-          >
-              <option value="1">Windows</option>
-              <option value="2">Linux</option>
-              <option value="3">MacOS</option>
-              <option value="4">Other</option>
-          </select>
-        </section>
-
-        <button className={styles.button} onClick={generateBear}>Generate Dev Bear!</button>
 
         {srcBear && <img src={srcBear} className={styles.generatedBear} alt="Generated Bear" />}
         {srcBear && renderMintButton()}

@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 export default function Carousel() {
   const [ currentIndex, setCurrentIndex ] = useState(1);
   const [ imgSrc, setImgSrc ] = useState("");
-  const MAX_INDEX = 6;
+  const MAX_INDEX = 7;
 
   useEffect(() => {
     setTimeout(nextImg, 500);

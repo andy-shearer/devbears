@@ -9,6 +9,7 @@ export default function Footer() {
         href="https://github.com/andy-shearer"
         target="_blank"
         rel="noopener noreferrer"
+        className={styles.a}
       >
         Built by Andy Shearer
       </a>
