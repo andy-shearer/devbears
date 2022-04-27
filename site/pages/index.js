@@ -127,8 +127,8 @@ export default function Home() {
   const renderLoading = () => {
     return (
       <section className={styles.loading}>
-        <h3 className={styles.loadingItem}>Please wait...</h3>
-        <img src="/loading.gif" alt="Loading spinner image" className={styles.loadingItem} />
+        <h3 className={styles.loadingItem}>Minting...</h3>
+        <img src="/loading.gif" alt="Spinner gif" className={styles.loadingItem} />
       </section>
     );
   }
