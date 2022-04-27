@@ -41,6 +41,10 @@
   margin-top: 20px;
 }
 
+.a {
+  color:#0070f3;
+}
+
 .a:hover,
 .a:focus,
 .a:active {

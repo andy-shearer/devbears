@@ -174,6 +174,22 @@ export default function Home() {
            as MetaMask.
         </Textion>
 
+        <Textion title="Which blockchain is used? ⛓">
+           Dev Bear NFTs are minted to the Polygon (Matic) blockchain which is a Layer 2 blockchain running on top of Ethereum.
+           Currently, the 'Matic Mumbai' is used, which means it is possible to interact with this app without spending any money
+           whatsoever.<br /><br />
+           Check out this blog post to get up and running on the Matic Mumbai test network:{" "}
+           <a
+             href="https://blog.cryptostars.is/adding-polygon-matic-mumbai-test-net-network-to-metamask-and-receiving-test-matic-tokens-be5381be2c53"
+             target="_blank"
+             rel="noopener noreferrer"
+             className={styles.a}
+           >
+             Adding Mumbai Test Network to Metamask
+           </a>
+
+        </Textion>
+
         <section className={styles.formBox}>
           <h2 className={styles.textHeading}>Create your Dev Bear 👇</h2>
           Total number of Dev Bears minted so far: {bearsMinted}
