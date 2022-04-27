@@ -61,8 +61,9 @@ export default function Home() {
       setWalletConnected(true);
       console.debug("Wallet has been successfully connected");
     } catch (err) {
-      window.alert("An error occurred, see console for details");
-      console.log(err);
+      if(err.code != -32002) { // Ignore the 'already processing eth_requestAccounts error
+        console.log(err);
+      }
     }
   }
 
@@ -88,6 +89,10 @@ export default function Home() {
   }
 
   const mintBear = async () => {
+    if(!walletConnected) {
+      window.alert("You must connect a crypto wallet in order to mint. https://metamask.io/faqs/");
+    }
+
     let minted = true;
     try {
       const signer = await getProviderOrSigner(true);
