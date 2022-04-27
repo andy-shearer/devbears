@@ -91,6 +91,7 @@ export default function Home() {
   const mintBear = async () => {
     if(!walletConnected) {
       window.alert("You must connect a crypto wallet in order to mint. https://metamask.io/faqs/");
+      return;
     }
 
     let minted = true;
