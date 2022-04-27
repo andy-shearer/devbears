@@ -88,6 +88,7 @@ export default function Home() {
   }
 
   const mintBear = async () => {
+    let minted = true;
     try {
       const signer = await getProviderOrSigner(true);
       const bearsContract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
@@ -101,6 +102,7 @@ export default function Home() {
       setLoading(true);
       await tx.wait();
     } catch (err) {
+        minted = false;
         if(err.code === 4001) {
           console.log("User rejected the transaction.");
         }
@@ -115,7 +117,9 @@ export default function Home() {
     }
 
     setLoading(false);
-    window.alert("Minted!");
+    if(minted) {
+      window.alert("Minted!");
+    }
     await getNumBearsMinted();
   }
 
