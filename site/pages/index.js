@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.css"
 import Footer from "../components/Footer"
 import Textion from "../components/Textion"
+import Carousel from "../components/Carousel"
 import buildImage from "../utils/ImageBuilder";
 import Head from "next/head"
 import Image from 'next/image'
@@ -119,7 +120,7 @@ export default function Home() {
 
   const renderMintButton = () => {
     return (
-      <button disabled={loading} onClick={mintBear}>{loading ? "Minting..." : "Mint this bear"}</button>
+      <button disabled={loading} className={styles.button} onClick={mintBear}>{loading ? "Minting..." : "Mint this bear"}</button>
     )
   }
 
@@ -146,16 +147,16 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>World Congress Dev Bears</h1>
-        Number of Dev Bears minted: {bearsMinted}
-        {loading && renderLoading()}
 
-        <Textion title="What is the World Congress?">
+        <Carousel />
+
+        <Textion title="What is the World Congress? 🌎">
            The World Congress is an upcoming event hosted by WeAreDevelopers, hosted for the global developer community
            to meet in Berlin. The event is a chance to connect with peers and get recent insights on software development,
            best practices and future tech trends.
         </Textion>
 
-        <Textion title="What are Dev Bears?">
+        <Textion title="What are Dev Bears? 🐻">
            Dev Bears are a randomly generated NFT created to commemorate and celebrate the upcoming 2022 World Congress event.
            Bears are an iconic symbol of Berlin where the event is being hosted this year. Each Dev Bear has some characteristics
            that are picked based off some user input.
@@ -164,7 +165,9 @@ export default function Home() {
            as MetaMask.
         </Textion>
 
-        <h2>Create your Dev Bear 🐻</h2>
+        <h2 className={styles.textHeading}>Create your Dev Bear 👇</h2>
+        Number of Dev Bears minted: {bearsMinted}
+        {loading && renderLoading()}
 
         <section className={styles.question}>
           <label htmlFor="area">What area does your Dev Bear work in?</label>
@@ -241,9 +244,10 @@ export default function Home() {
           </select>
         </section>
 
-          <button className={styles.generateButton} onClick={generateBear}>Generate Dev Bear!</button>
-          {srcBear && <img src={srcBear} className={styles.generatedBear} alt="Generated Bear" />}
-          {srcBear && renderMintButton()}
+        <button className={styles.button} onClick={generateBear}>Generate Dev Bear!</button>
+
+        {srcBear && <img src={srcBear} className={styles.generatedBear} alt="Generated Bear" />}
+        {srcBear && renderMintButton()}
       </main>
 
       <Footer />
