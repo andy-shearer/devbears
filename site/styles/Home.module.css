@@ -33,6 +33,13 @@
   flex-grow: 1;
 }
 
+.footer a:hover,
+.footer a:focus,
+.footer a:active {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 .title a {
   color: #0070f3;
   text-decoration: none;
