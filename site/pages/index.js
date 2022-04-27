@@ -115,6 +115,7 @@ export default function Home() {
     }
 
     setLoading(false);
+    window.alert("Minted!");
     await getNumBearsMinted();
   }
 

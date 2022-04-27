@@ -13,6 +13,14 @@ export default function Footer() {
       >
         Built by Andy Shearer
       </a>
+      <section className={styles.footerLinks}>
+        <a href="https://testnets.opensea.io/collection/world-congress-bears-v4" target="_blank">
+          <img src="/opensea.svg"/>
+        </a>
+        <a href="https://twitter.com/devshez" target="_blank">
+          <img src="/twitter.svg"/>
+        </a>
+      </section>
     </footer>
   );
 }
