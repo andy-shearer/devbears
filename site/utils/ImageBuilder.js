@@ -52,7 +52,7 @@ function getLang(input) {
   return getPath(`lang${langId}.png`);
 }
 
-export default async function buildImage(api, input = "11111") {
+export default async function buildImage(api, input = "1111") {
   console.debug("Input string for new bear:", input)
   const imgPrefix = "data:image/png;base64,";
   if(api) {
