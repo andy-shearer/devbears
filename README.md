@@ -7,7 +7,7 @@ The category that I've built this project for:
 >**'WeAreDevelopers Challenge #1 - NFT Generator'**\
 > NFTs are really popular! So wouldn't it be cool to have a site where users can input basic requirements and the app would provide with randomised NFT like profile pictures?
 
-## Link to try it out: https://devbears.herokuapp.com/
+## Link to try it out: https://devbears.vercel.app/
 ## Video demo: https://youtu.be/JCgRD8FBQbs
 ## Inspiration
 Initially I did some research on the sponsor for this category of the hackathon, which is 'WeAreDevelopers'. They have a large upcoming event being hosted in a few months time in Berlin called the 'World Congress' - which they say is _"the world's largest developer event"_.
