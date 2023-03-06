@@ -94,39 +94,44 @@ export default function Home() {
       return;
     }
 
-    let minted = true;
-    try {
-      const signer = await getProviderOrSigner(true);
-      const bearsContract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
-      const inputString = formData.area + formData.country + formData.lang + formData.os;
-      let tx = await bearsContract.mint(
-        inputString,
-        {
-          value: utils.parseEther("0.05"),
-        }
-      );
-      setLoading(true);
-      await tx.wait();
-    } catch (err) {
-        minted = false;
-        if(err.code === 4001) {
-          console.log("User rejected the transaction.");
-        }
-        /**
-         * Allowed errors:
-         *    -32002 "Already processing eth_requestAccounts. Please wait"
-         */
-        else if(err.code != -32002) {
-          window.alert("An error occurred - see console for details");
-          console.log(err);
-        }
-    }
+    // Bears can't be minted on the current deployed contract, which points to the wrong baseURI (Heroku rather than Vercel).
+    // Redeploy contract using deploy.js and update the contract address constant to re-enable minting (this will reset the mint count to 0).
+    window.alert("Unfortunately bears can no longer be minted. Sorry!");
+    return;
 
-    setLoading(false);
-    if(minted) {
-      window.alert("Minted!");
-    }
-    await getNumBearsMinted();
+//    let minted = true;
+//    try {
+//      const signer = await getProviderOrSigner(true);
+//      const bearsContract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+//      const inputString = formData.area + formData.country + formData.lang + formData.os;
+//      let tx = await bearsContract.mint(
+//        inputString,
+//        {
+//          value: utils.parseEther("0.05"),
+//        }
+//      );
+//      setLoading(true);
+//      await tx.wait();
+//    } catch (err) {
+//        minted = false;
+//        if(err.code === 4001) {
+//          console.log("User rejected the transaction.");
+//        }
+//        /**
+//         * Allowed errors:
+//         *    -32002 "Already processing eth_requestAccounts. Please wait"
+//         */
+//        else if(err.code != -32002) {
+//          window.alert("An error occurred - see console for details");
+//          console.log(err);
+//        }
+//    }
+//
+//    setLoading(false);
+//    if(minted) {
+//      window.alert("Minted!");
+//    }
+//    await getNumBearsMinted();
   }
 
   const renderMintButton = () => {
